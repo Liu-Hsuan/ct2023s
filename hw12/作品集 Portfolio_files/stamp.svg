@@ -48,9 +48,9 @@
   <text x="30.066" y="53.9" style="font-size:3pt;">大</text>
 
   <rect x="20" y="54.8330" width="9.660" height="9.660" stroke="blue" stroke-width="0.1" fill="none"/>
-  <text x="20.2" y="62.500" style="font-size:7pt;">劉</text>
+  <text x="20.2" y="62.000" style="font-size:6pt;">劉</text>
   <rect x="20" y="64.489" width="9.660" height="9.660" stroke="blue" stroke-width="0.1" fill="none"/>
-  <text x="20.2" y="72.500" style="font-size:7pt;">萱</text>
+  <text x="20.2" y="72.500" style="font-size:6pt;">萱</text>
 
   <rect x="29.666" y="54.8330" width="4.8330" height="4.8330" stroke="blue" stroke-width="0.1" fill="none"/>
   <text x="30.066" y="58.733" style="font-size:3pt;" fill="blue">人</text>
