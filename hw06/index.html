@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <link href="./style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作品集 - 作業六</title>
+  <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+
+</head>
+
+<body style="background-color: #6A4C9C;">
+  <div>
+    <div class="row Color Block" style="font-size: 35px;">
+      作業 06
+    </div>
+    <div class="row Color Block">
+      <a href="https://github.com/chiaoooo/ct2023s/tree/main/hw06/src" style="color:white; font-weight: bold;">點這裡進入我的
+        src 資料夾！！</a>
+    </div>
+    <div class="row Color Block">
+      這次的作業步驟較多所以相對較複雜，但我也從中了解到OpenType Format有幾種類型，其中有TTC和OTC，以及本次作業的OTF檔和TTF檔，我們了解到其中的差別和如何轉換，也了解到如何打包字體以及圖檔的轉換。
+    </div>
+
+    <div class="row Color Block">
+      <div class="col-12 Color Block" style="margin: 0px; font-size: 36px;">評分標準</div>
+      <div class=" Color Block col-6" style="margin: 0px; color:#CCFFCC; background: #336633;">
+        Simple baseline (2pt)<br>
+        上傳 sourcHanSerif-Heavy.ttf 到 src 中
+      </div>
+
+      <div class=" Color Block col-6" style="margin: 0px; color:#FF8888; background: #663333;">
+        Medium baseline (3pt)<br>
+        在作品及網頁中秀出你的姓名的 png 檔案
+      </div>
+
+      <div class=" Color Block" style="margin: 0px; color:#DDAAFF; background: #442266;">
+        Strong baseline (5pt)<br>
+        在作品集網頁中打出 「我是xxx」（xxx 是你的名字，且必須為 morphing 後的結果）
+      </div>
+
+
+
+    </div>
+    <div class="row hw12">
+      <div class="col-md-12 twenty">
+        <table>
+          <tbody>
+            <tr>
+              <th>總分</th>
+              <th>完成後打勾</th>
+              <th>配分</th>
+              <th>分項描述</th>
+            </tr>
+            <tr>
+              <td rowspan="7" id="myTotal"></td>
+              <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked></td>
+              <td id="m1">2</td>
+              <td>Simple baseline - 使用守寫字(舊版)製作字型</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
+              <td id="m2">3</td>
+              <td>Medium baseline - 使用Flexi Font 系統製作字型</td>
+            </tr>
+            <tr>
+              <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked></td>
+              <td id="m3">5</td>
+              <td>Strong baseline - 繳交實體的紙本稿紙 (限定紙本)</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="row Color Block">
+    <div class="col-6 Color Block" style="margin: 0px; font-size: 35px;">cjkFONT + Morphing</div>
+    <div class="col-6 Color Block" style="margin: 0px;">
+      檔案請放在 ./src 資料夾中<br>
+      全瀨體檔案名稱改為 "cjkfont.ttf" (請全部小寫)<br>
+      png 檔案照姓名順序取名為 1.png / 2.png /3.png
+    </div>
+
+    <div class="col-6 Color Block" style="margin: 0px; font-size: 35px;">名字的 png 檔</div>
+    <div class="col-6 Color Block" style="margin: 0px;">
+      <img src="src/1.png">
+      <img src="src/2.png">
+    </div>
+
+    <div class="col-12 Color Block" style="margin: 0px; font-size: 70px!important" id="DemoText1">
+      我是 劉萱 （改成自己的名字 ）
+    </div>
+
+  </div>
+
+  <script>
+    $(function () {
+      var f = function () {
+        $(this).next().text($(this).is(':checked') ? '做完' : '未做完');
+      };
+      $('input').change(f).trigger('change');
+    });
+
+    d3.select("#myCheckbox1").on("change", update);
+    d3.select("#myCheckbox2").on("change", update);
+    d3.select("#myCheckbox3").on("change", update);
+    d3.select("#myCheckbox4").on("change", update);
+    d3.select("#myCheckbox5").on("change", update);
+    d3.select("#myCheckbox6").on("change", update);
+    d3.select("#myCheckbox7").on("change", update);
+
+    update();
+
+    function update() {
+
+      var score = 0;
+
+      if (d3.select("#myCheckbox1").property("checked")) {
+        score += parseInt(d3.select('#m1').html());
+      }
+
+      if (d3.select("#myCheckbox2").property("checked")) {
+        score += parseInt(d3.select('#m2').html());
+      }
+
+      if (d3.select("#myCheckbox3").property("checked")) {
+        score += parseInt(d3.select('#m3').html());
+      }
+      console.log(score);
+      d3.select("#myTotal").html(score);
+    }
+  </script>
+
+</body>
+
+
+<script src="./index.js"></script>
+
+</html>
