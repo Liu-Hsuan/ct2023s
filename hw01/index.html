@@ -1,34 +1,36 @@
-<!doctype html>
-<html lang="zh-Hant-TW">
-<head>
+<!DOCTYPE html>
+<!-- saved from url=(0052)https://hengweibin.github.io/ct2023s/hw01/index.html -->
+<html lang="zh-Hant-TW"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <!-- Required meta tags -->
-<meta charset="utf-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- D3, jquery -->
-<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" charset="utf-8"></script>
+<script src="./index/d3.v3.min.js.下載" charset="utf-8"></script>
+<script src="./index/jquery-3.6.0.min.js.下載" charset="utf-8"></script>
 
 <!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+<link href="./index/bootstrap.min.css" rel="stylesheet">
+<script src="./index/bootstrap.bundle.min.js.下載"></script>
 
 <title>作品集 Portfolio</title>
+<!-- https://alexlenail.me/NN-SVG/about.html -->
+<link rel="icon" href="https://hengweibin.github.io/ct2023s/hw00/favicon.svg">
 <style type="text/css">
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200&display=swap');
 
   table {
-  border-collapse: collapse;
-  border: 2px solid white; /* rgba(217,140,144,1) */
-  font-size:  12pt;
-  margin-left: auto;
-  margin-right: auto;
+    border-collapse: collapse;
+    border: 2px solid white; /* rgba(217,140,144,1) */
+    font-size:  12pt;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   td,
   th {
-  border: 1px solid white;
-  padding: 2px 8px;
+    border: 1px solid white;
+    padding: 2px 8px;
   }
 
   .flipswitch
@@ -108,9 +110,24 @@
     src: url(cjkFonts_allseto_v1.11.woff2) format('woff2');
     /* https://cloudconvert.com/ttf-to-woff2 */
   }
-  
+
+  @font-face {
+    font-family:'FiraCode-Regular';
+    src: url(FiraCode-Regular.woff2) format('woff2');
+    /* https://worldofzero.com/posts/enable-font-ligatures-vscode/ */
+  }
+
   .cjkFonts {
     font-family: 'cjkFonts';
+    writing-mode: vertical-rl;
+  }
+
+  .cjkFontsH {
+    font-family: 'cjkFonts';
+  }
+
+  .FiraCode {
+    font-family: 'FiraCode-Regular';
   }
 
   .github-corner:hover 
@@ -161,12 +178,16 @@
     from { background-position:0 100%; }
     to { background-position:20px 100%; }
   }
+
+  .RED_BG { background-color:#9F353A; }
+  .BLUE_BG {background-color:#005CAF;}
+  .GREEN_BG {background-color:#36563C;}
   /* 波浪 */
 </style>
-</head>
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
 <body>
 <!-- https://alexlenail.me/NN-SVG/about.html -->
-<a href="https://github.com/你的帳號/ct2023s/" class="github-corner" aria-label="View source on Github">
+<a href="https://github.com/%E4%BD%A0%E7%9A%84%E5%B8%B3%E8%99%9F/ct2023s/" class="github-corner" aria-label="View source on Github">
   <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#f9eced; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
     <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
     <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="#f9eced" stroke="#6A4C9C" style="transform-origin: 130px 106px;" class="octo-arm"></path>
@@ -180,13 +201,20 @@
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
+      <h3>字體設計與文字編碼   Computer Typography and Character Encoding</h3>
+    </div>
+  </div>
+
+  <!-- ------------------------------------------------>
+  <div class="row hw12">
+    <div class="col-md-12 twenty">
       <h1>作業 01</h1>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty cjkFonts">
+    <div class="col-md-12 twenty">
       若該次作業有程式碼，請放在 https://github.com/<span style="color:red;">你的帳號</span>/ct2023s/hw<span style="color:red;">01</span>/src/ 檔案夾。
     </div>
   </div>
@@ -195,57 +223,73 @@
   <div class="row hw12">
     <div class="col-md-12 twenty">
       <table>
-        <tr>
+        <tbody><tr>
           <th>總分</th>
           <th>完成後打勾</th>
           <th>配分</th>
           <th>分項描述</th>
         </tr>
         <tr>
-          <td rowspan="7" id="myTotal"></td>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox1"></td>
-          <td id='m1'>2</td>
-          <td>第01週 2023.02.24</td>
+          <td rowspan="7" id="myTotal">10</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox1" checked=""></td>
+          <td id="m1">2</td>
+          <td>作業 a</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked></td>
-          <td id='m2'>2</td>
-          <td>第02週 2023.03.03</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox2" checked=""></td>
+          <td id="m2">2</td>
+          <td>作業 b</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox3"></td>
-          <td id='m3'>2</td>
-          <td>第03週 2023.03.10</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox3" checked=""></td>
+          <td id="m3">2</td>
+          <td>作業 c</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox4"></td>
-          <td id='m4'>2</td>
-          <td>第04週 2023.03.17</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox4" checked=""></td>
+          <td id="m4">2</td>
+          <td>作業 d</td>
         </tr>
         <tr>
-          <td><input type="checkbox" class="flipswitch" id="myCheckbox5"></td>
-          <td id='m5'>2</td>
-          <td>第05週 2023.03.24</td>
+          <td><input type="checkbox" class="flipswitch" id="myCheckbox5" checked=""></td>
+          <td id="m5">2</td>
+          <td>作業 e</td>
         </tr>
-      </table>
+      </tbody></table>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
     <div class="col-md-12 twenty">
-      心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。心得報告 105 字。
+      這次作業雖然難度不高，但步驟卻相當繁瑣，讓我花了很多時間來完成。在這個過程中，我學到了耐心和細心的重要性。儘管有時候感到挫折和壓力，但我不放棄，一步一步地解決問題，最終完成了任務。這次經歷讓我更加明白，即使面對看似繁雜的工作，只要有耐心和毅力，就能克服困難。我也學會了更好地組織和安排時間，以確保順利完成作業。雖然辛苦，但這次的心得報告讓我更成熟，我相信這個經驗對我的學習和未來的挑戰都將有所幫助。
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第01週 2023.02.24 作業</h1>
+    <div class="col-md-12 twenty cjkFonts">
+      <h1> 「全瀨體」</h1>
+
+      <ul>
+        <li>原文出處: cjkfonts 全瀨體 <a href="https://cjkfonts.io/blog/cjkfonts_allseto" target="_blank"> https://cjkfonts.io/blog/cjkfonts_allseto</a></li>
+        <li><cite>全瀨體，基於瀨戶字體，透過深度學習智能造字，產生的字體數量是跟思源黑體相同。</cite></li>
+        <li><cite>瀨戶字體，原作者將此字體用 SIL Open Font License 授權方法，可以商業使用，可以容許修改字體。</cite></li>
+      </ul>
+
+      <h1> 「FiraCode」</h1>
+
+      <ul>
+       <li>原文出處: <a href="https://worldofzero.com/posts/enable-font-ligatures-vscode/" target="_blank"> Enable Font Ligatures in VS Code </a></li>
+        <li><a href="https://github.com/tonsky/FiraCode" target="_blank">https://github.com/tonsky/FiraCode</a></li>
+      </ul>
+
+
     </div>
   </div>
 
   <!-- ------------------------------------------------>
+  <!--
   <div class="row hw12">
     <div class="col-md-6 twenty">
       <video id="video1" style="width:100%;max-width:100%;" controls="">
@@ -258,19 +302,136 @@
       </video>
     </div>
   </div>
+  -->
 
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第02週 2023.03.03 作業</h1>
+    <div class="col-md-12 twenty cjkFontsH">
+      <h1>(a) Unicode 輸入法練習 </h1>
+      <a href="https://mothereff.in/utf-8" target="_blank">UTF-8 encoder/decoder</a>
+      <table>
+        <tbody><tr>
+          <th>字元</th>
+          <th>Unicode 十六進位 (Alt + x)<hr>Unicode 二進位 (按小算盤)</th>
+          <th>BIG-5 十六進位 (中文全字庫)</th>
+        </tr>
+        <tr>
+          <td>東</td>
+          <td>U+6771<hr>0110 0111 0111 0001</td>
+          <td>AA46</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>🍰</td>
+          <td>U+1f370<hr>0001 1111 0011 0111 0000</td> <!-- Unicode 二進位 -->
+          <td>N/A</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>劉</td>
+          <td>U+5289<hr>0101 0010 1000 1001</td> <!-- Unicode 二進位 -->
+          <td>BC42</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>萱</td>
+          <td>U+8431<hr>1000 0100 0011 0001</td> <!-- Unicode 二進位 -->
+          <td>B8A9</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>竜</td>
+          <td>U+7ADC<hr>1111 0101 1011 100</td> <!-- Unicode 二進位 -->
+          <td>957C (BIG-5E)</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>龙</td>
+          <td>U+9F99<hr>1001 1111 1001 1001</td> <!-- Unicode 二進位 -->
+          <td>N/A</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>龍</td>
+          <td>U+9F8D<hr>1001 1111 1000 1101</td> <!-- Unicode 二進位 -->
+          <td>C073</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>龖</td>
+          <td>U+9F96<hr>1001 1111 1001 0110</td> <!-- Unicode 二進位 -->
+          <td>N/A</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>龘</td>
+          <td>U+9F98<hr>1001 1111 1001 1000</td> <!-- Unicode 二進位 -->
+          <td>F9D5</td> <!-- BIG-5 十六進位 -->
+        </tr>
+        <tr>
+          <td>𪚥</td> <!-- 新細明體-ExtB -->
+          <td>U+2A6A5<hr>0010 1010 0110 1010 0101</td> <!-- Unicode 二進位 -->
+          <td>N/A</td> <!-- BIG-5 十六進位 -->
+        </tr>
+      </tbody></table>
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      
+    <div class="col-md-12 twenty cjkFontsH">
+      <h1>(b) UTF-8 UTF-16 BE UTF-16 LE</h1>
+
+      <table>
+        <tbody><tr>
+          <th>字元</th> <!-- 紺 https://nipponcolors.com/#kon --> <!-- 桔梗 https://nipponcolors.com/#kikyo --> 
+          <th colspan="1">Unicode</th>
+          <th colspan="4" style="background-color:#9F353A;">UTF-8 燕脂</th> <!-- 燕脂 https://nipponcolors.com/#enji -->
+          <th colspan="4" style="background-color:#005CAF;">UTF-16 BE 瑠璃</th> <!-- 瑠璃 https://nipponcolors.com/#ruri https://nipponcolors.com/#kon -->
+          <th colspan="4" style="background-color:#36563C;">UTF-16 LE 千歳緑</th> <!-- 千歳緑 https://nipponcolors.com/#chitosemidori -->
+        </tr>
+        <tr>
+          <td>東</td>
+          <td>U+6771<hr>0110 0111 0111 0001</td>
+          <td style="background-color:#9F353A;">E6<hr>1110 0110</td> <!-- UTF-8 -->
+          <td style="background-color:#9F353A;">9D<hr>1001 1101</td>
+          <td style="background-color:#9F353A;">B1<hr>1011 0001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td style="background-color:#005CAF;">67<hr>0110 0111</td> <!-- UTF-16 BE -->
+          <td style="background-color:#005CAF;">71<hr>0111 0001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td style="background-color:#36563C;">71<hr>0111 0001</td> <!-- UTF-16 LE -->
+          <td style="background-color:#36563C;">67<hr>0110 0111</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+        </tr>       
+        <tr>
+          <td>劉</td>
+          <td>  U+5289<hr>1010 0101 0001 001</td>
+          <td class="RED_BG"><hr>1110 0101</td> <!-- UTF-8 -->
+          <td class="RED_BG"><hr>1000 1010</td>
+          <td class="RED_BG"><hr>1000 1001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td class="BLUE_BG"><hr>0101 0010</td> <!-- UTF-16 BE -->
+          <td class="BLUE_BG"><hr>1000 1001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td class="GREEN_BG"><hr>1000 1001</td> <!-- UTF-16 LE -->
+          <td class="GREEN_BG"><hr>0101 0010</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+        </tr>
+        <tr>
+          <td>萱</td>
+          <td>U+8431<hr>1000 0100 0011 0001</td>
+          <td class="RED_BG"><hr>1110 1000</td> <!-- UTF-8 -->
+          <td class="RED_BG"><hr>1001 0000</td>
+          <td class="RED_BG"><hr>1011 0001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td class="BLUE_BG"><hr>10000100</td> <!-- UTF-16 BE -->
+          <td class="BLUE_BG"><hr>00110001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td class="GREEN_BG"><hr>0011 0001</td> <!-- UTF-16 LE -->
+          <td class="GREEN_BG"><hr>1000 0100</td>
+          <td>xxxx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+        </tr>
+      </tbody></table>
     </div>
   </div>
 
@@ -278,15 +439,91 @@
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第03週 2023.03.10 作業</h1>
+    <div class="col-md-12 twenty cjkFontsH">
+      <h1>(c) 漢字中的四疊字</h1>
+      <!--
+      <ul>
+        <li><a href="" target="_blank"> </a></li>
+        <li><a href="" target="_blank"> </a></li>
+      </ul>
+      -->
+      <ul>
+        <li><a href="https://zidian.qianp.com/sidiezi.html" target="_blank">四叠字大全 - 汉语字典 - 千篇国学</a></li>
+        <li><a href="https://zh.wikipedia.org/wiki/%E5%9B%9B%E5%8F%A0%E5%AD%97" target="_blank">四疊字</a></li>
+        <li><a href="https://www.compart.com/en/unicode/U+2A6A5" target="_blank">𪚥</a></li>
+        <li><a href="https://www.compart.com/en/unicode/U+28C3B" target="_blank">𨰻</a></li>
+      </ul>
+
+      <table>
+        <tbody><tr>
+          <th>字元</th> <!-- 紺 https://nipponcolors.com/#kon --> <!-- 桔梗 https://nipponcolors.com/#kikyo --> 
+          <th colspan="1">Unicode</th>
+          <th colspan="4" style="background-color:#9F353A;">UTF-8 燕脂</th> <!-- 燕脂 https://nipponcolors.com/#enji -->
+          <th colspan="4" style="background-color:#005CAF;">UTF-16 BE 瑠璃</th> <!-- 瑠璃 https://nipponcolors.com/#ruri https://nipponcolors.com/#kon -->
+          <th colspan="4" style="background-color:#36563C;">UTF-16 LE 千歳緑</th> <!-- 千歳緑 https://nipponcolors.com/#chitosemidori -->
+        </tr>
+        <tr>
+          <td>東</td>
+          <td>U+6771<hr>0110 0111 0111 0001</td>
+          <td style="background-color:#9F353A;">E6<hr>1110 0110</td> <!-- UTF-8 -->
+          <td style="background-color:#9F353A;">9D<hr>1001 1101</td>
+          <td style="background-color:#9F353A;">B1<hr>1011 0001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td style="background-color:#005CAF;">67<hr>0110 0111</td> <!-- UTF-16 BE -->
+          <td style="background-color:#005CAF;">71<hr>0111 0001</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td style="background-color:#36563C;">71<hr>0111 0001</td> <!-- UTF-16 LE -->
+          <td style="background-color:#36563C;">67<hr>0110 0111</td>
+          <td>xx<hr>xxxx xxxx</td>
+          <td>xx<hr>xxxx xxxx</td>
+        </tr>       
+        <tr>
+          <td>𨰻</td>
+          <td>U+28C3B<hr>0010 1000 1100 0011 1011</td>
+          <td class="RED_BG">F0<hr>1111 0000</td> <!-- UTF-8 -->
+          <td class="RED_BG">A8<hr>1010 1000</td>
+          <td class="RED_BG">B0<hr>1011 0000</td>
+          <td class="RED_BG">BB<hr>1011 1011</td>
+          <td class="BLUE_BG">D8<hr>1101 1000</td> <!-- UTF-16 BE -->
+          <td class="BLUE_BG">63<hr>0110 0011</td>
+          <td class="BLUE_BG">DC<hr>1101 1100</td>
+          <td class="BLUE_BG">3B<hr>0011 1011</td>
+          <td class="GREEN_BG">63<hr>0110 0011</td> <!-- UTF-16 BE -->
+          <td class="GREEN_BG">D8<hr>1101 1000</td>
+          <td class="GREEN_BG">3B<hr>0011 1011</td>
+          <td class="GREEN_BG">DC<hr>1101 1100</td>
+        </tr>
+        <tr>
+          <td>𪚥</td>
+          <td>U+2A6A5<hr>0010 1010 0110 1010 0101</td>
+          <td class="RED_BG">F6<hr>1111 0110</td> <!-- UTF-8 -->
+          <td class="RED_BG">AA<hr>1010 1010</td>
+          <td class="RED_BG">9A<hr>1001 1010</td>
+          <td class="RED_BG">A5<hr>1010 0101</td>
+          <td class="BLUE_BG">D8<hr>1101 1000</td> <!-- UTF-16 BE -->
+          <td class="BLUE_BG">69<hr>0110 1001</td>
+          <td class="BLUE_BG">DE<hr>1101 1110</td>
+          <td class="BLUE_BG">A5<hr>1010 0101</td>
+          <td class="GREEN_BG">69<hr>0110 1001</td> <!-- UTF-16 BE -->
+          <td class="GREEN_BG">D8<hr>1101 1000</td>
+          <td class="GREEN_BG">A5<hr>1010 0101</td>
+          <td class="GREEN_BG">DE<hr>1101 1110</td>
+        </tr>
+      </tbody></table>
+
     </div>
   </div>
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      
+    <div class="col-md-12 twenty cjkFontsH">
+      <h1>(d) 非Unicode環境 </h1>
+      <li>在非Unicode環境下，由於不同國家和地區採用的字元集不一致，很可能出現無法正常顯示所有字元的情況。</li>
+      <li>微軟使用了頁碼（Code age）轉換表的技術來過渡性地部分解決這一問題。</li>
+      <li>即通過指定的轉換表，將非Unicode的字元編碼，轉換為同一字元對應的系統內部使用的 Unicode編碼。</li>
+      <li>成功後，放一張圖在這裡。</li>
+      <img src="./index/d.png" width="768">
     </div>
   </div>
 
@@ -294,31 +531,13 @@
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第04週 2023.03.17 作業</h1>
-    </div>
-  </div>
-
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      
-    </div>
-  </div>
-
-
-
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第05週 2023.03.24 作業</h1>
-    </div>
-  </div>
-
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      
+    <div class="col-md-12 twenty cjkFontsH">
+      <h1>(e) Ligature 「合字」「連字」</h1>
+      <a href="https://github.com/tonsky/FiraCode">FiraCode</a>
+      <li class="">一般 &nbsp;       ‌ ‍ -&gt; =&gt; == === != =/= &lt;= &gt;= &lt;=&gt; </li>
+      <li class="FiraCode">FiraCode -&gt; =&gt; == === != =/= &lt;= &gt;= &lt;=&gt; </li>
+      <li>成功後，放一張圖在這裡。</li>
+      <img src="./index/e.png" width="768">
     </div>
   </div>
 
@@ -326,15 +545,8 @@
 
   <!-- ------------------------------------------------>
   <div class="row hw12">
-    <div class="col-md-12 twenty">
-      <h1>第06週 2023.03.31 作業</h1>
-    </div>
-  </div>
-
-  <!-- ------------------------------------------------>
-  <div class="row hw12">
-    <div class="col-md-12 twenty">
-      
+    <div class="col-md-12 twenty cjkFontsH">
+      <h3>字體設計與文字編碼   Computer Typography and Character Encoding</h3>
     </div>
   </div>
 
@@ -342,7 +554,6 @@
   <!-- ------------------------------------------------>
 
   <!-- ------------------------------------------------>
-
 
 <script>
   $(function() {
@@ -391,5 +602,6 @@
   }
 </script>
 
-</body>
-</html>
+
+
+</div></body></html>
